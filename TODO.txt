@@ -1,0 +1,7 @@
+TODO:
+-Add qualitative parameters for music generation (happines, genre, etc..)
+-Add Bundle for MacOs
+-Add Bundle for Linux
+-Swing settings
+-Add mp3 export
+-Add wav export 
