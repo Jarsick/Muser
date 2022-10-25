@@ -1,3 +1,10 @@
+/******************************************************************************
+ * Copyright (c) 2022, Daniele Aurigemma
+ * All rights reserved.
+ * 
+ * Part of the Muser project github: https://github.com/Jarsick/Muser
+ */
+
 package jarsick.muser.generator.drum;
 
 import java.util.ArrayList;
@@ -11,18 +18,18 @@ public abstract class DrumPatternGenerator extends PatternGenerator<Drum> {
 
 	private Drum instrument;
 	private float density;
-	
+
 	public DrumPatternGenerator(Drum instrument, SongInfo songInfo, float density) {
 		super(songInfo);
 		this.instrument = instrument;
 		this.density = density;
 	}
-	
-	
+
+
 	public float getDensity() {
 		return this.density;
 	}
-	
+
 	/**Returns the probability to find a note in a certain position of the measure*/
 	public abstract float getProbability(int timeInUnit, int measures);
 

@@ -1,3 +1,10 @@
+/******************************************************************************
+ * Copyright (c) 2022, Daniele Aurigemma
+ * All rights reserved.
+ * 
+ * Part of the Muser project github: https://github.com/Jarsick/Muser
+ */
+
 package jarsick.muser.structure;
 
 import java.util.ArrayList;
@@ -24,7 +31,7 @@ public record Section (
 		List<Note> bass,
 		List<Note> melody
 		) {
-	
+
 	private Section() {
 		this(
 				0,
@@ -43,7 +50,7 @@ public record Section (
 				new ArrayList<Note>()
 				);
 	}
-	
+
 	public static Song mergeInSong(SongInfo songInfo, List<Section > sections) {
 		var song = new Song(songInfo);
 		for(var section : sections) {

@@ -1,3 +1,10 @@
+/******************************************************************************
+ * Copyright (c) 2022, Daniele Aurigemma
+ * All rights reserved.
+ * 
+ * Part of the Muser project github: https://github.com/Jarsick/Muser
+ */
+
 package jarsick.muser.generator.drum;
 
 import java.util.List;
@@ -30,11 +37,11 @@ public class RandomDrumPattern {
 	public List<Drum> getHatPattern() {
 		return hatPattern;
 	}
-	
+
 	public List<Drum> getCrashPattern() {
 		return crashPattern;
 	}
-	
-	
-	
+
+
+
 }

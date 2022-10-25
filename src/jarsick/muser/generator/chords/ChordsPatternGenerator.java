@@ -1,3 +1,10 @@
+/******************************************************************************
+ * Copyright (c) 2022, Daniele Aurigemma
+ * All rights reserved.
+ * 
+ * Part of the Muser project github: https://github.com/Jarsick/Muser
+ */
+
 package jarsick.muser.generator.chords;
 
 import java.util.ArrayList;
@@ -107,9 +114,9 @@ public class ChordsPatternGenerator extends PatternGenerator<Chord>{
 	@Override
 	public List<Chord> generatePattern(int measures) {
 		List<Chord> result = switch(this.type) {
-			case RHYTHMIC-> generateRhythmicAccompaniment(rhythm, measures);
-			case ARPEGGIATED -> generateArpeggiatedAccompaniment(rhythm, measures);
-			case PAD -> generatePadAccompaniment(rhythm, measures);
+		case RHYTHMIC-> generateRhythmicAccompaniment(rhythm, measures);
+		case ARPEGGIATED -> generateArpeggiatedAccompaniment(rhythm, measures);
+		case PAD -> generatePadAccompaniment(rhythm, measures);
 		};
 		SongGeneratorUtil.adjustDuration(result, getSongInfo());
 		return result;

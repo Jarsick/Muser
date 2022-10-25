@@ -1,3 +1,10 @@
+/******************************************************************************
+ * Copyright (c) 2022, Daniele Aurigemma
+ * All rights reserved.
+ * 
+ * Part of the Muser project github: https://github.com/Jarsick/Muser
+ */
+
 package jarsick.muser.generator.drum;
 
 import java.util.ArrayList;
@@ -18,17 +25,17 @@ public class RhythmPatternGenerator extends PatternGenerator<Drum>{
 		super(songInfo);
 		this.density = density;
 	}
-	
+
 
 	@Override
 	public List<Drum> generatePattern(int measures) {
 		ArrayList<Drum> result = new ArrayList<>();
-		
+
 		final int KICK = Drum.KICK.ordinal();
 		final int SNARE = Drum.SNARE.ordinal();
 		final int HAT = Drum.HAT.ordinal();
 		final int SILENCE = Drum.SILENCE.ordinal();
-		
+
 		float[] probabilities = new float[Drum.values().length]; // Kick, Snare, Hat, silence, che poi verranno tradotti
 		boolean allSilence = true;
 
@@ -49,17 +56,17 @@ public class RhythmPatternGenerator extends PatternGenerator<Drum>{
 				probabilities[HAT] = Random.HIGH_PROBABILITY * density; 
 				probabilities[SILENCE] = Random.HIGH_PROBABILITY; 
 			}
-			
+
 			int instrumentIndex = Random.montecarlo(probabilities);
-			
+
 			var instrument = Drum.values()[instrumentIndex];
 			result.add(instrument);			
 			if(instrument != Drum.SILENCE) {
 				allSilence = false;
 			}
 		}
-		
-		
+
+
 		if(allSilence) {
 			result.set(0, Drum.KICK);
 		}

@@ -1,3 +1,10 @@
+/******************************************************************************
+ * Copyright (c) 2022, Daniele Aurigemma
+ * All rights reserved.
+ * 
+ * Part of the Muser project github: https://github.com/Jarsick/Muser
+ */
+
 package jarsick.muser.generator.melody;
 
 import java.util.ArrayList;
@@ -17,7 +24,7 @@ public class MelodyPatternGenerator extends PatternGenerator<Note>{
 	private Key key;
 	private List<Chord> progression;
 	private List<Drum> rhythm;
-	
+
 	private List<Integer> voiceLine; 
 
 
@@ -41,16 +48,16 @@ public class MelodyPatternGenerator extends PatternGenerator<Note>{
 			Chord chord = progression.get(i%progression.size());
 
 			Note baseNote = lastNote != null? getNearestChordNote(lastNote, chord) : chord.getNotes().get((int)Random.random(chord.getNotes().size())).copy();//getNearestChordNote(lastNote, chord);
-			
+
 			// Limiting the octaves
 			if(baseNote.getOctaveIndex() > MAX_OCTAVE) {
 				baseNote.transpose(-12); 
 			}
-			
+
 			if(baseNote.getOctaveIndex() < MIN_OCTAVE) {
 				baseNote.transpose(12);
 			}
-			
+
 			// Adjusting voiceline on rhythm and chords
 			for(int drumIndex = 0; drumIndex < rhythm.size() ; drumIndex++) {
 				var drum = rhythm.get(drumIndex);
@@ -76,16 +83,16 @@ public class MelodyPatternGenerator extends PatternGenerator<Note>{
 				if(!note.isSilence() && (getSongInfo().isBeat(drumIndex) || getSongInfo().isUpbeat(drumIndex))) {
 					note = getNearestChordNote(note, chord); // forcing note to be on the chord
 				}
-				
+
 				if(note != null && !note.isSilence()) {
 					lastNote = note.copy();
 				}
-							
+
 				note.setDuration(1);
 				result.add(note);
 			}
 		}
-		
+
 		SongGeneratorUtil.adjustDuration(result, this.getSongInfo());
 		return result;
 	}

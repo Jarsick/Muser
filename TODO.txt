@@ -5,3 +5,4 @@ TODO:
 -Swing settings
 -Add mp3 export
 -Add wav export 
+-Remove jfigure dependency, using another MIDI library or implementing one.

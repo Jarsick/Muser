@@ -1,3 +1,10 @@
+/******************************************************************************
+ * Copyright (c) 2022, Daniele Aurigemma
+ * All rights reserved.
+ * 
+ * Part of the Muser project github: https://github.com/Jarsick/Muser
+ */
+
 package jarsick.muser.notation;
 
 public enum Scale{
@@ -40,7 +47,7 @@ public enum Scale{
 		this.type = type;
 		this.degrees = degrees;
 	}
-	
+
 
 	private static Degree degree(int tonicDistance, Chord.Type chordType) {
 		return new Degree(tonicDistance, chordType);
@@ -49,7 +56,7 @@ public enum Scale{
 	final public Chord.Type getType(){
 		return this.type;
 	}
-	
+
 	final public Degree getDegree(int degree){
 		return this.degrees[degree - 1];
 	}
@@ -61,7 +68,7 @@ public enum Scale{
 
 	static public record Degree(int tonicDistance, Chord.Type type){
 	}
-	
+
 	@Override
 	public String toString() {
 		return super.toString().replace('_', ' ');

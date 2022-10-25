@@ -1,9 +1,14 @@
+/******************************************************************************
+ * Copyright (c) 2022, Daniele Aurigemma
+ * All rights reserved.
+ * 
+ * Part of the Muser project github: https://github.com/Jarsick/Muser
+ */
+
 package jarsick.muser.notation;
 
-import jarsick.muser.notation.Scale.Degree;
-
 public class Key {
-	
+
 	private Note tonic;
 	private Scale scale;
 

@@ -1,9 +1,16 @@
+/******************************************************************************
+ * Copyright (c) 2022, Daniele Aurigemma
+ * All rights reserved.
+ * 
+ * Part of the Muser project github: https://github.com/Jarsick/Muser
+ */
+
 package jarsick.muser.notation;
 
 
 public class Note implements MusicalNotation{
 	final static private int SILENCE_VALUE = 0;
-	
+
 	// central OCTAVE definition
 	final static public Note C = new UnmutableNote(60, 1, 1, "C");
 	final static public Note C_SHARP = new UnmutableNote(61, 1, 1, "C#"),  D_FLAT = C_SHARP;
@@ -22,12 +29,12 @@ public class Note implements MusicalNotation{
 
 	private static class UnmutableNote extends Note {
 		private String name;
-		
+
 		public UnmutableNote(int value, int duration, float velocity, String name) {
 			super(value, duration, velocity);
 			this.name = name;
 		}
-		
+
 		@Override
 		public String toString() {
 			return this.name;
@@ -59,7 +66,7 @@ public class Note implements MusicalNotation{
 		return TONICS[(int)Math.random() * TONICS.length];
 	}
 
-	
+
 	private int value;
 	private int duration;
 	private float velocity;

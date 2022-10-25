@@ -1,5 +1,12 @@
 package jarsick.muser.generator;
 
+/******************************************************************************
+ * Copyright (c) 2022, Daniele Aurigemma
+ * All rights reserved.
+ * 
+ * Part of the Muser project github: https://github.com/Jarsick/Muser
+ */
+
 import static jarsick.muser.generator.PatternModification.*;
 
 import jarsick.muser.generator.random.Random;

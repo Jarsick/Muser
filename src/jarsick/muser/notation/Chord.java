@@ -1,3 +1,10 @@
+/******************************************************************************
+ * Copyright (c) 2022, Daniele Aurigemma
+ * All rights reserved.
+ * 
+ * Part of the Muser project github: https://github.com/Jarsick/Muser
+ */
+
 package jarsick.muser.notation;
 
 import java.util.ArrayList;
@@ -173,7 +180,7 @@ public class Chord implements MusicalNotation{
 		return maxVelocity;
 	}
 
-	
+
 	public void clear() {
 		this.notes.clear();
 	}

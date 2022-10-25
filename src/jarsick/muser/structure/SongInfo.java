@@ -1,3 +1,10 @@
+/******************************************************************************
+ * Copyright (c) 2022, Daniele Aurigemma
+ * All rights reserved.
+ * 
+ * Part of the Muser project github: https://github.com/Jarsick/Muser
+ */
+
 package jarsick.muser.structure;
 
 import jarsick.muser.generator.random.Random;
@@ -60,19 +67,19 @@ public class SongInfo {
 	public int getDivisionPerMeasure() {
 		return getTimeSignature().getTop() * (getTimeDivision().getValue() / getTimeSignature().getBottom());
 	}
-	
+
 	final public boolean isBeat(int timeInDivisions) {
 		return measureRelativeTimeDivisionIndex(timeInDivisions) == 0;
 	}
-	
+
 	final public boolean isUpbeat(int timeInDivisions) {
 		float currentBeatInMeasure = measureRelativeTimeDivisionIndex(timeInDivisions);
 		return  currentBeatInMeasure != 0 && currentBeatInMeasure % 1 == 0 /**only int results are accepted*/;
 	}
-	
+
 	final private float measureRelativeTimeDivisionIndex(int timeInDivisions) {
 		return ((timeInDivisions * this.getTimeSignature().getBottom()) / (float)getTimeDivision().getValue()) % getTimeSignature().getTop();
 	}
-	
+
 
 }

@@ -1,3 +1,10 @@
+/******************************************************************************
+ * Copyright (c) 2022, Daniele Aurigemma
+ * All rights reserved.
+ * 
+ * Part of the Muser project github: https://github.com/Jarsick/Muser
+ */
+
 package jarsick.muser.generator.melody;
 
 import java.util.ArrayList;
@@ -8,7 +15,7 @@ import jarsick.muser.generator.random.Random;
 import jarsick.muser.structure.SongInfo;
 
 public class VoiceLinePatternGenerator extends PatternGenerator<Integer> {
-	
+
 	final static private float NOISE_INCREMENT = 1f;
 
 	public VoiceLinePatternGenerator(SongInfo songInfo) {

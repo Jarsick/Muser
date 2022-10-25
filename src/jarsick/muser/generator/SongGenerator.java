@@ -1,3 +1,10 @@
+/******************************************************************************
+ * Copyright (c) 2022, Daniele Aurigemma
+ * All rights reserved.
+ * 
+ * Part of the Muser project github: https://github.com/Jarsick/Muser
+ */
+
 package jarsick.muser.generator;
 
 import static jarsick.muser.generator.PatternModification.*;
@@ -104,19 +111,19 @@ public class SongGenerator {
 		if(contains(modifications, HALF_MELODY)) {
 			settings.getDensity().setMelody(originalSettings.getDensity().getMelody()/2);
 		}
-		
+
 		if(contains(modifications, HALF_BASS)) {
 			settings.getDensity().setBass(originalSettings.getDensity().getBass()/2);
 		}
-		
+
 		if(contains(modifications, HALF_CHORDS)) {
 			settings.getDensity().setChords(originalSettings.getDensity().getChords()/2);
 		}
-		
+
 		if(contains(modifications, HALF_DRUM)) {
 			settings.getDensity().setDrum(originalSettings.getDensity().getDrum()/2);
 		}
-		
+
 		if(contains(modifications, TONIC_HIT)) {
 			var type = songInfo.getKey().getScale().getType();
 			kickPattern = Arrays.asList(Drum.KICK);

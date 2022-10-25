@@ -1,3 +1,10 @@
+/******************************************************************************
+ * Copyright (c) 2022, Daniele Aurigemma
+ * All rights reserved.
+ * 
+ * Part of the Muser project github: https://github.com/Jarsick/Muser
+ */
+
 package jarsick.muser.generator.utils;
 
 import java.util.ArrayList;
@@ -7,7 +14,7 @@ import jarsick.muser.notation.MusicalNotation;
 import jarsick.muser.structure.SongInfo;
 
 public class SongGeneratorUtil {
-	
+
 	public static <T extends MusicalNotation> void adjustDuration(List<T> notes, SongInfo songInfo){
 		MusicalNotation lastNote = null;
 		int lastMeasure = 0;
@@ -19,23 +26,23 @@ public class SongGeneratorUtil {
 				lastNote.setDuration(lastNote.getDuration() + currentNote.getDuration());
 				toBeRemoved.add(currentNote);
 			}
-			
+
 			if(lastNote == null || (!currentNote.isSilence())) {
 				lastNote = currentNote;
 				lastMeasure = currentMeasure;
 			}
 		}
-		
+
 		notes.removeAll(toBeRemoved);
 	}
-	
-	
+
+
 	final public static <T> List<T> copyList(List<T> source){
 		var clone = new ArrayList<T>();
 		clone.addAll(source);
 		return clone;
 	}
-	
-	
-	
+
+
+
 }

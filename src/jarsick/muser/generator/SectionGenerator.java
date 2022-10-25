@@ -1,3 +1,10 @@
+/******************************************************************************
+ * Copyright (c) 2022, Daniele Aurigemma
+ * All rights reserved.
+ * 
+ * Part of the Muser project github: https://github.com/Jarsick/Muser
+ */
+
 package jarsick.muser.generator;
 
 import java.util.List;
@@ -41,7 +48,7 @@ public class SectionGenerator {
 				false
 				);
 	}
-	
+
 
 
 	public static Section generate(
@@ -65,7 +72,7 @@ public class SectionGenerator {
 		var songInfo = settings.getSongInfo();
 		var density = settings.getDensity();
 		var measures = settings.getSubsectionMeasures();
-		
+
 		if(progression == null) {
 			progression = new ChordProgressionGenerator(songInfo).generatePattern(measures);
 		}else {
