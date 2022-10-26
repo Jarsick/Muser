@@ -5,9 +5,9 @@
     <!--define folder properties-->
     <property name="dir.buildfile" value="."/>
     <property name="dir.workspace" value="${dir.buildfile}/.."/>
-    <property name="dir.jarfile" value="${dir.workspace}/Muser Release/Muser/bin/"/>
+    <property name="dir.jarfile" value="${dir.workspace}/Muser Release/jar/"/>
     <target name="create_run_jar">
-        <jar destfile="${dir.jarfile}/muser-1.0.0.jar" filesetmanifest="mergewithoutmain">
+        <jar destfile="${dir.jarfile}/muser.jar" filesetmanifest="mergewithoutmain">
             <manifest>
                 <attribute name="Main-Class" value="jarsick.muser.gui.MuserGUI"/>
                 <attribute name="Class-Path" value="."/>

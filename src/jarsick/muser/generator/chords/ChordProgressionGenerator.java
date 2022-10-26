@@ -49,7 +49,7 @@ public class ChordProgressionGenerator extends PatternGenerator<Chord>{
 			if(i == 0) { // first measure (resolve)
 				distribution = getLowProbabilityDistribution();
 				distribution[0] = Random.HIGH_PROBABILITY; // 5TH
-				distribution[3] = Random.HIGH_PROBABILITY; // 4TH
+				distribution[3] = Random.STANDARD_PROBABILITY; // 4TH
 				distribution[5] = Random.STANDARD_PROBABILITY; // 6TH
 			}else if(i == measures - 1) { // last measure (tension)
 				distribution = getLowProbabilityDistribution();

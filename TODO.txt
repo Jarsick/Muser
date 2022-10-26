@@ -2,7 +2,8 @@ TODO:
 -Add qualitative parameters for music generation (happines, genre, etc..)
 -Add Bundle for MacOs
 -Add Bundle for Linux
--Swing settings
+-Add swing settings
+-Add Duration Settings
 -Add mp3 export
 -Add wav export 
 -Remove jfigure dependency, using another MIDI library or implementing one.
