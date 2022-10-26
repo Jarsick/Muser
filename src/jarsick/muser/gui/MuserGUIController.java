@@ -17,6 +17,7 @@ import javax.sound.midi.Sequencer;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileFilter;
 
 import jarsick.muser.audio.Audio;
 import jarsick.muser.generator.SongGeneratorSettings;
@@ -70,7 +71,20 @@ public class MuserGUIController {
 			return;
 		}
 		var fc = new JFileChooser();
-		int returnVal = fc.showOpenDialog(this.frame);
+		fc.setAcceptAllFileFilterUsed(false);
+		fc.addChoosableFileFilter(new FileFilter() {
+			@Override
+			public boolean accept(File f) {
+				return f.getAbsolutePath().endsWith(Audio.MIDI_EXTENSION);
+			}
+
+			@Override
+			public String getDescription() {
+				return "MIDI file";
+			}
+			
+		});
+		int returnVal = fc.showSaveDialog(this.frame);
 		if (returnVal == JFileChooser.APPROVE_OPTION) {
 			this.saveMIDI(fc.getSelectedFile());
 		}
