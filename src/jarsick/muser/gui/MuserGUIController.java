@@ -71,7 +71,7 @@ public class MuserGUIController {
 			return;
 		}
 		var fc = new JFileChooser();
-		fc.setAcceptAllFileFilterUsed(false);
+		//fc.setAcceptAllFileFilterUsed(false);
 		fc.addChoosableFileFilter(new FileFilter() {
 			@Override
 			public boolean accept(File f) {
