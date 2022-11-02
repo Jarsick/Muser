@@ -38,7 +38,6 @@ public class MuserGUIController {
 			this.sequencer = MidiSystem.getSequencer();
 			sequencer.open();
 		} catch (MidiUnavailableException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			JOptionPane.showMessageDialog(this.frame, "MIDI player not available!");
 		}
@@ -71,7 +70,6 @@ public class MuserGUIController {
 			return;
 		}
 		var fc = new JFileChooser();
-		//fc.setAcceptAllFileFilterUsed(false);
 		fc.addChoosableFileFilter(new FileFilter() {
 			@Override
 			public boolean accept(File f) {
