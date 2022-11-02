@@ -77,8 +77,8 @@ public class ChordProgressionGenerator extends PatternGenerator<Chord>{
 		int[] degrees = generateDegreesProgression(measures);
 		var result = new ArrayList<Chord>();
 		for(int degree : degrees) {
-			var firstNote = getSongInfo().getKey().getNote(degree);
-			var chord = Chord.create(firstNote, getSongInfo().getKey().getScale().getDegree(degree).type());
+			var firstNote = getSongInfo().key().getNote(degree);
+			var chord = Chord.create(firstNote, getSongInfo().key().getScale().getDegree(degree).type());
 			result.add(chord);
 		}
 		return result;

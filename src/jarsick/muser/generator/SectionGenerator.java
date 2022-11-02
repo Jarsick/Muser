@@ -171,7 +171,7 @@ public class SectionGenerator {
 
 		if(melody == null) {	
 			melody = new MelodyPatternGenerator(
-					songInfo.getKey(),
+					songInfo.key(),
 					progression,
 					melodyRhythm,
 					voiceLine,

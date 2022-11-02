@@ -42,7 +42,7 @@ public class BassPatternGenerator extends PatternGenerator<Note>{
 					if(Random.random() < Random.LOW_PROBABILITY) {
 						var copiedNote = chord.getLowerNote().copy();
 						var transposeValue = (int)(7 * Random.randomGaussian());
-						getSongInfo().getKey().transpose(copiedNote, transposeValue);
+						getSongInfo().key().transpose(copiedNote, transposeValue);
 						note = copiedNote;
 					}else {
 						note = Note.createSilence(1);

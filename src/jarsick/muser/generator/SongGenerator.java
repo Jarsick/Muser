@@ -47,7 +47,12 @@ public class SongGenerator {
 		var INTRO_FILL =  modifySection(settings, INTRO_2, true);
 		var ENDING =  modifySection(settings, A_MAIN_SUBSECTION, false, SectionModification.ENDING.getRandomModification());
 
-		INTRO = Section.merge(Arrays.asList(INTRO, INTRO_FILL)); // Double the intro
+		var timeSignatureFraction = settings.getTimeSignature().getTop() / (float)settings.getTimeSignature().getBottom();
+		if(timeSignatureFraction < 1) {
+			INTRO = Section.merge(Arrays.asList(INTRO, INTRO_FILL)); // Double the intro
+		}else {
+			INTRO = Section.merge(Arrays.asList(INTRO_FILL)); // Just 1 intro loop
+		}
 
 		var core = Arrays.asList(B, A, B_ALTERED, B, A_ALTERED, A, C, A, A_ENDING);
 		var coreLoop = new ArrayList<Section>();
@@ -125,14 +130,14 @@ public class SongGenerator {
 		}
 
 		if(contains(modifications, TONIC_HIT)) {
-			var type = songInfo.getKey().getScale().getType();
+			var type = songInfo.key().getScale().getType();
 			kickPattern = Arrays.asList(Drum.KICK);
 			snarePattern = Arrays.asList(Drum.SNARE);
 			hatPattern = Arrays.asList(Drum.HAT);
 			crashPattern = Arrays.asList(Drum.CRASH);
-			chordsPattern = Arrays.asList(Chord.create(songInfo.getKey().getTonic(), type).setDuration(TONIC_HIT_DURATION));
-			bassNotes =  Arrays.asList(songInfo.getKey().getTonic().copy().transpose(-12).setDuration(TONIC_HIT_DURATION));
-			melodyNotes =  Arrays.asList(songInfo.getKey().getTonic().copy().transpose(12).setDuration(TONIC_HIT_DURATION));
+			chordsPattern = Arrays.asList(Chord.create(songInfo.key().getTonic(), type).setDuration(TONIC_HIT_DURATION));
+			bassNotes =  Arrays.asList(songInfo.key().getTonic().copy().transpose(-12).setDuration(TONIC_HIT_DURATION));
+			melodyNotes =  Arrays.asList(songInfo.key().getTonic().copy().transpose(12).setDuration(TONIC_HIT_DURATION));
 
 		}
 
