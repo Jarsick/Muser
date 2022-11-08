@@ -3,6 +3,7 @@
 It gives you a GUI to set parameters (or randomize them) to customize the song generation.  
 A preview of the song can be heard by this GUI, and it can be exported on a MIDI File.  
 The MIDI export is intended to be edited by other programs. Not to be used as is.  
+If want to use a song from muser you can credit **Jarsick** as well as **Muser**.
 
 
 ## Installing
