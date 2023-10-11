@@ -27,19 +27,22 @@ public class MelodyPatternGenerator extends PatternGenerator<Note>{
 
 	private List<Integer> voiceLine; 
 
+	 private int minOctave = 5;
+	 private int maxOctave = 6;
 
-	public MelodyPatternGenerator(Key key, List<Chord> progression, List<Drum> rhythm, List<Integer> voiceLine, SongInfo songInfo) {
+	public MelodyPatternGenerator(Key key, List<Chord> progression, List<Drum> rhythm, List<Integer> voiceLine, SongInfo songInfo, int minOctave, int maxOctave) {
 		super(songInfo);
 		this.progression = progression;
 		this.key = key;
 		this.rhythm = rhythm;
 		this.voiceLine = voiceLine;
+		this.minOctave = minOctave;
+		this.maxOctave = maxOctave;
 	}
 
 	@Override
 	public List<Note> generatePattern(int measures) {
-		final int MAX_OCTAVE = 6;
-		final int MIN_OCTAVE = 5;
+
 		var result = new ArrayList<Note>();
 
 		Note lastNote = null;
@@ -49,14 +52,7 @@ public class MelodyPatternGenerator extends PatternGenerator<Note>{
 
 			Note baseNote = lastNote != null? getNearestChordNote(lastNote, chord) : chord.getNotes().get((int)Random.random(chord.getNotes().size())).copy();//getNearestChordNote(lastNote, chord);
 
-			// Limiting the octaves
-			if(baseNote.getOctaveIndex() > MAX_OCTAVE) {
-				baseNote.transpose(-12); 
-			}
 
-			if(baseNote.getOctaveIndex() < MIN_OCTAVE) {
-				baseNote.transpose(12);
-			}
 
 			// Adjusting voiceline on rhythm and chords
 			for(int drumIndex = 0; drumIndex < rhythm.size() ; drumIndex++) {
@@ -72,7 +68,11 @@ public class MelodyPatternGenerator extends PatternGenerator<Note>{
 					break;
 				case KICK:
 				case SNARE:
-					note = getMelodyNote(baseNote, voiceLine, drumIndex);
+					if(Random.random() < Random.HIGH_PROBABILITY) {
+						note = getMelodyNote(baseNote, voiceLine, drumIndex);
+					}else {
+						note = Note.createSilence(1);
+					}
 					break;
 				case SILENCE:
 				default:
@@ -82,6 +82,20 @@ public class MelodyPatternGenerator extends PatternGenerator<Note>{
 
 				if(!note.isSilence() && (getSongInfo().isBeat(drumIndex) || getSongInfo().isUpbeat(drumIndex))) {
 					note = getNearestChordNote(note, chord); // forcing note to be on the chord
+				}
+
+
+				 // limit the note octave
+				if(!note.isSilence()) {
+					int oldOctave = note.getOctaveIndex();
+					while (note.getOctaveIndex() > maxOctave || note.getOctaveIndex() < minOctave) {
+						int octave = note.getOctaveIndex();
+						if (octave > maxOctave) {
+							note.transpose(-12);
+						} else if (octave < minOctave) {
+							note.transpose(12);
+						}
+					}
 				}
 
 				if(note != null && !note.isSilence()) {

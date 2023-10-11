@@ -72,6 +72,8 @@ public class SectionGenerator {
 		var songInfo = settings.getSongInfo();
 		var density = settings.getDensity();
 		var measures = settings.getSubsectionMeasures();
+		var minOctave = settings.getMinOctave();
+		var maxOctave = settings.getMaxOctave();
 
 		if(progression == null) {
 			progression = new ChordProgressionGenerator(songInfo).generatePattern(measures);
@@ -175,7 +177,9 @@ public class SectionGenerator {
 					progression,
 					melodyRhythm,
 					voiceLine,
-					songInfo
+					songInfo,
+					minOctave,
+					maxOctave
 					).generatePattern(measures);
 		}else {
 			melody = copyList(melody);

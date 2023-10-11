@@ -16,9 +16,18 @@ import jarsick.muser.notation.TimeSignature;
 import jarsick.muser.structure.SongInfo;
 
 public class SongGeneratorSettings {
+
+	public static int DEFAULT_MIN_OCTAVE = 5;
+	public static int DEFAULT_MAX_OCTAVE = 6;
+
 	private static int MAX_TEMPO = 250;
 	private static int MIN_TEMPO = 90;
 	private static int DEFAULT_SUBSECTION_MEASURES = 4;
+
+	 private boolean singableMelody;
+	 public boolean isSingableMelody() {
+		return singableMelody;
+	}
 	
 	private int bassInstrument, melodyInstrument, chordsInstrument, drumKit;
 	 private float bassVolume, drumVolume, melodyVolume, chordsVolume;
@@ -31,6 +40,8 @@ public class SongGeneratorSettings {
 	 private int loops;
 	 private boolean doubleDrumExport;
 	 private int subsectionMeasures;
+	 private int minOctave;
+	 private int maxOctave;
 	 
 	 public SongGeneratorSettings() {
 		 bassInstrument = 0;
@@ -47,6 +58,8 @@ public class SongGeneratorSettings {
 		 density = new Density();
 		 doubleDrumExport = true;
 		 subsectionMeasures = DEFAULT_SUBSECTION_MEASURES;
+		 minOctave = DEFAULT_MIN_OCTAVE;
+		 maxOctave = DEFAULT_MAX_OCTAVE;
 	 }
 
 	public int getBassInstrument() {
@@ -199,6 +212,23 @@ public class SongGeneratorSettings {
 		return this;
 	}
 
+	public void setMinOctave(int minOctave) {
+		this.minOctave = minOctave;
+	}
+
+	public int getMinOctave() {
+		return this.minOctave;
+	}
+
+	public void setMaxOctave(int maxOctave) {
+		this.maxOctave = maxOctave;
+	}
+
+	public int getMaxOctave() {
+		return this.maxOctave;
+	}
+
+	
 	public void setDoubleDrumExport(boolean value) {
 		this.doubleDrumExport = value;
 	}
@@ -209,6 +239,8 @@ public class SongGeneratorSettings {
 
 	public SongGeneratorSettings copy() {
 		var clone = new SongGeneratorSettings();
+		clone.setMinOctave(this.getMinOctave());
+		clone.setMaxOctave(this.getMaxOctave());
 		clone.setBassInstrument(this.getBassInstrument());
 		clone.setBassVolume(this.getBassVolume());
 		clone.setChordsInstrument(this.getChordsInstrument());
@@ -228,5 +260,4 @@ public class SongGeneratorSettings {
 		clone.setDensity(this.getDensity().copy());
 		return clone;
 	}
-
 }
